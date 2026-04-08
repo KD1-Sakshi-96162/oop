@@ -1,0 +1,12 @@
+package com.sunbeam;
+
+public class Program {
+Book[] arr=new Book[]{
+	
+	 new Book("ISBN101", 499.99, "James Gosling", 10),
+	 new Book("ISBN102", 299.50, "Herbert Schildt", 5),
+	 new Book("ISBN103", 750.00, "Bjarne Stroustrup", 7),
+	 new Book("ISBN104", 199.99, "Dennis Ritchie", 12),
+	 new Book("ISBN105", 999.00, "Robert Martin", 3)
+};
+}

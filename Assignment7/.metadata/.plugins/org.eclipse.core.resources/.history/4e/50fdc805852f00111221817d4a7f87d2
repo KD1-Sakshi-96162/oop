@@ -1,0 +1,23 @@
+package com.sunbeam;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Program {
+public static Scanner sc=new Scanner(System.in);
+private static List<Book>bookList=new ArrayList<>();
+
+public static int menuList() {
+	System.out.println("0.Exit");
+	System.out.println("1.Add Book");
+	System.out.println("2.Display books in forward order");
+	System.out.println("3.Display all book in reverse order");
+	System.out.println("Delete a book");
+	System.out.println("Sort all book");
+	System.out.println("enter the choice : ");
+	return sc.nextInt();
+}
+
+
+}

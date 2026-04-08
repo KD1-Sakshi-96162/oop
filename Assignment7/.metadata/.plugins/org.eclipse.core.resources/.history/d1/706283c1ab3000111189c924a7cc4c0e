@@ -1,0 +1,115 @@
+package com.sunbeam;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Program {
+public static Scanner sc=new Scanner(System.in);
+private static List<Book>bookList=new ArrayList<>();
+
+public static int menuList() {
+	System.out.println("0.Exit");
+	System.out.println("1.Add Book");
+	System.out.println("2.Display books in forward order");
+	System.out.println("3.Display all book in reverse order");
+	System.out.println("4.Delete a book");
+	System.out.println("5.Sort all book");
+	System.out.println("enter the choice : ");
+	return sc.nextInt();
+}
+
+public static Book[] getBooks() {
+	Book[] arr= {
+	new Book("ISBN101", 499.99, "James Gosling", 10),
+	new Book("ISBN102", 299.50, "Herbert Schildt", 5),
+	new Book("ISBN103", 750.00, "Bjarne Stroustrup", 7),
+	new Book("ISBN104", 199.99, "Dennis Ritchie", 12),
+    new Book("ISBN105", 999.00, "Robert Martin", 3),
+	};
+	return arr;
+
+}
+public static void addBook(Book[] arr) {
+	for(Book b :arr) {
+		bookList.add(b);
+	}
+}
+
+public static void acceptRecord(String[] isbn) {
+	System.out.print("Enter the empid: ");
+	isbn[0]=sc.nextLine();
+}
+
+public static void printBooks() {
+    if (bookList.isEmpty()) {
+        System.out.println("No books found!");
+    } else {
+        for (Book b : bookList) {
+            System.out.println(b);
+        }
+    }
+}
+
+public static void printReverse() {
+	if(bookList.isEmpty()) {
+		System.out.println("No books found!");
+	}else {
+		for(int i=bookList.size() -1;i>=0;i--) {
+			System.out.println(bookList.get(i));
+		}
+	}
+}
+
+public static boolean deleteBook(String[] isbn) {
+	for(Book b : bookList) {
+		if(b.getIsbn().equals(isbn[0])) {
+			bookList.remove(b);
+			return true;
+		}
+	}
+	return false;
+}
+
+public static void sortBookDesc() {
+	bookList.sort((b1,b2)->Double.compare(b2.getPrice(),b1.getPrice()));
+	System.out.println("Books sorted by price(descending)");
+}
+
+public static void main(String[] args) {
+	int[] isbn=new int[1];
+	int choice;
+	while((choice= menuList())!=0) {
+		switch(choice) {
+		case 1:
+			Book[] b=getBooks();
+			Program.addBook(b);
+			break;
+			
+		case 2:
+			printBooks();
+			break;
+			
+		case 3:
+			printReverse();
+			break;
+			
+		case 4:
+		    String[] isbn1 = new String[1];
+
+		    System.out.print("Enter ISBN to delete: ");
+		    sc.nextLine(); // buffer clear
+		    isbn1[0] = sc.nextLine();
+
+		    if(deleteBook(isbn1))
+		        System.out.println("Deleted");
+		    else
+		        System.out.println("Not found");
+			break;
+			
+		case 5:
+			
+		}
+	}
+}
+}
